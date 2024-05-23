@@ -13,6 +13,7 @@
    <children>
        <TableView fx:id="todoTable">
            <columns>
+               <TableColumn fx:id="idColumn" prefWidth="25.0" text="ID"  editable="false"/>
                <TableColumn fx:id="taskColumn" prefWidth="75.0" text="Task Title" />
                <TableColumn fx:id="descriptionColumn" prefWidth="125.0" text="Description" />
                <TableColumn fx:id="doneColumn" prefWidth="50.0" text="Done" />

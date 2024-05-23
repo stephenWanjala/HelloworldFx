@@ -1,28 +1,26 @@
 package com.github.stephenwanjala.demotodofx;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
 
 public class Todo {
-    private StringProperty task;
-    private BooleanProperty done;
-    private int id;
-    private StringProperty description;
+    private final StringProperty task;
+    private final BooleanProperty done;
+    private final IntegerProperty id;
+    private final StringProperty description;
 
     public Todo() {
         this.task = new SimpleStringProperty();
         this.description = new SimpleStringProperty();
         this.done = new SimpleBooleanProperty();
+        this.id = new SimpleIntegerProperty();
     }
 
     public Todo(String task, String description, boolean done) {
         this.task = new SimpleStringProperty(task);
         this.description = new SimpleStringProperty(description);
         this.done = new SimpleBooleanProperty(done);
-        this.id = generateId();
+        this.id = new SimpleIntegerProperty(generateId());
     }
 
     public String getTask() {
@@ -38,7 +36,7 @@ public class Todo {
     }
 
     public int getId() {
-        return id;
+        return id.get();
     }
 
     public void setTask(String task) {
@@ -61,6 +59,7 @@ public class Todo {
         return task;
     }
 
+
     public ObservableValue<String> descriptionProperty() {
         return description;
     }
@@ -77,5 +76,9 @@ public class Todo {
 
     private int generateId() {
         return (int) (Math.random() * 1000);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 }

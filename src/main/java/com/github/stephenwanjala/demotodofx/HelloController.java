@@ -11,8 +11,11 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 public class HelloController {
+
     @FXML
     public Button addButton;
+    @FXML
+    public TableColumn<Todo, Integer> idColumn;
     @FXML
     private TableView<Todo> todoTable;
 
@@ -32,6 +35,7 @@ public class HelloController {
     @FXML
     public void initialize() {
         // Set cell value factories for each column
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         taskColumn.setCellValueFactory(cellData -> cellData.getValue().taskProperty());
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         todoTable.setEditable(true);
