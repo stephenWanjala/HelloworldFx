@@ -11,7 +11,8 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 public class HelloController {
-
+    @FXML
+    public Button addButton;
     @FXML
     private TableView<Todo> todoTable;
 
@@ -83,5 +84,10 @@ public class HelloController {
                 }
             }
         });
+    }
+
+    public void addTask() {
+        Todo newTodo = new Todo("New Task", "New Description", false);
+        todoList.add(newTodo);
     }
 }
